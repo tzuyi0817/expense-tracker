@@ -55,19 +55,20 @@
     <p class="amount">{{{amount}}}</p>
   </div>
 
+  {{#each records}}
   <div class="card-row mt-3">
     <div class="row">
       <div class="awesome mt-3">
-        <i class="fas fa-utensils"></i>
+        <i class="{{{category}}}"></i>
       </div>
 
       <div class="category card-body">
         <h4>{{{this.name}}}</h4>
-        <p class="date">{{{this.date}}}</p>
+        <p class="date">{{{date}}}</p>
       </div>
 
       <div class="card-body mt-2">
-        <p class="money">{{{this.amount}}}</p>
+        <p class="money">{{{amount}}}</p>
       </div>
 
       <div class="edit card-end mt-4">
@@ -81,6 +82,7 @@
       </form>
     </div>
   </div>
+  {{/each}}
 
   <a href="/record/new" class="create btn btn-danger mt-5 mb-5">新增支出</a>
 </div>
