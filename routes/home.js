@@ -4,7 +4,7 @@ const Record = require('../models/record')
 
 router.get('/', (req, res) => {
   Record.find((err, records) => {
-    let category = records.category
+    const category = req.query.category
     if (category === '餐飲食品') {
       category = 'fas fa-utensils'
     }

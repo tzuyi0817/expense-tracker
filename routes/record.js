@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const Record = require('./models/record')
+// const Record = require('./models/record')
 
 
 //新增一筆支出頁面
@@ -27,3 +27,5 @@ router.post('/:id', (req, res) => {
 router.post('/:id/delete', (req, res) => {
 
 })
+
+module.exports = router
