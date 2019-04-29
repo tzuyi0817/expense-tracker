@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const Record = require('./models/record')
 
 
 //新增一筆支出頁面

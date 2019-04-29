@@ -14,17 +14,18 @@
 
 <body>
   <header>
-    <nav class="navbar navbar-dark bg-primary">
+    <nav class="navbar navbar-dark bg-primary justify-content-between">
       <a class="navbar-brand" href="/">家庭記帳本</a>
+
+      {{#if isAuthenticated}}
+      <a class="btn btn-outline-light" href="/record/logout">登出</a>
+      {{else}}
+      <a class="btn btn-outline-light" href="/record/login">登入</a>
+      {{/if}}
     </nav>
   </header>
 
   <main>
-    <div class="nav row mt-3">
-      <h3>家庭記帳本</h3>
-      <a href="/users/logout" class="btn btn-primary">登出</a>
-    </div>
-
     <div class="container mt-3">
       {{{ body }}}
     </div>

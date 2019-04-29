@@ -1,44 +1,58 @@
 <div class="container">
   <div class="down row mt-5">
-    <div class="dropdown">
-      <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        月份
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">1</a>
-        <a class="dropdown-item" href="#">2</a>
-        <a class="dropdown-item" href="#">3</a>
-        <a class="dropdown-item" href="#">4</a>
-        <a class="dropdown-item" href="#">5</a>
-        <a class="dropdown-item" href="#">6</a>
-        <a class="dropdown-item" href="#">7</a>
-        <a class="dropdown-item" href="#">8</a>
-        <a class="dropdown-item" href="#">9</a>
-        <a class="dropdown-item" href="#">10</a>
-        <a class="dropdown-item" href="#">11</a>
-        <a class="dropdown-item" href="#">12</a>
+    <div class="col-md-3">
+      <div class="dropdown">
+        <button class="btn btn-outline-dark btn-block dropdown-toggle" type="button" id="dropdownMenuButton"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{#if filterMonth}}
+          {{{filterMonth}}}
+          {{else}}
+          月份
+          {{/if}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">一月</a>
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">二月</a>
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">三月</a>
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">四月</a>
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">五月</a>
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">六月</a>
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">七月</a>
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">八月</a>
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">九月</a>
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">十月</a>
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">十一月</a>
+          <a class="dropdown-item" href="/?filterMonth={{this.number}}&filterCategory={{filterCategory}}">十二月</a>
+          <a class="dropdown-item" href="/?filterMonth=&filterCategory={{filterCategory}}">不分月份</a>
+        </div>
       </div>
     </div>
+    <div class="col-md-3">
+      <div class="dropdown2">
+        <button class="btn btn-outline-dark  btn-block dropdown-toggle" type="button" id="dropdownMenuButton2"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-    <div class="dropdown">
-      <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
-        aria-haspopup="true" aria-expanded="false">
-        類別
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item" href="#">家居物業</a>
-        <a class="dropdown-item" href="#">交通出行</a>
-        <a class="dropdown-item" href="#">休閒娛樂</a>
-        <a class="dropdown-item" href="#">餐飲食品</a>
-        <a class="dropdown-item" href="#">其他</a>
+          {{#if filterCategory}}
+          {{{filterCategory}}}
+          {{else}}
+          類別
+          {{/if}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+          <a class="dropdown-item" href="/?filterCategory=home&filterMonth={{filterMonth}}">家居物業</a>
+          <a class="dropdown-item" href="/?filterCategory=shuttle-van">交通出行</a>
+          <a class="dropdown-item" href="/?filterCategory=grin-beam&filterMonth={{filterMonth}}">休閒娛樂</a>
+          <a class="dropdown-item" href="/?filterCategory=utensils&filterMonth={{filterMonth}}">餐飲食品</a>
+          <a class="dropdown-item" href="/?filterCategory=pen&filterMonth={{filterMonth}}">其他</a>
+          <a class="dropdown-item" href="/?filterCategory=&filterMonth={{filterMonth}}">不分類別</a>
+        </div>
       </div>
     </div>
   </div>
 
   <div class="total row mt-5">
     <h4>總金額:</h4>
-    <p class="amount">99999</p>
+    <p class="amount">{{{amount}}}</p>
   </div>
 
   <div class="card-row mt-3">
@@ -48,12 +62,12 @@
       </div>
 
       <div class="category card-body">
-        <h4>午餐</h4>
-        <p class="date">2019/4/23</p>
+        <h4>{{{this.name}}}</h4>
+        <p class="date">{{{this.date}}}</p>
       </div>
 
       <div class="card-body mt-2">
-        <p class="money">60</p>
+        <p class="money">{{{this.amount}}}</p>
       </div>
 
       <div class="edit card-end mt-4">

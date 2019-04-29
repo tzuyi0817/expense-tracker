@@ -15,6 +15,7 @@ app.set('view engine', 'handlebars')
 app.use(express.static('public'))
 
 //setting mongodb
+mongoose.set('debug', true)
 mongoose.connect('mongodb://localhost/record', { useNewUrlParser: true, useCreateIndex: true })
 
 const db = mongoose.connection
