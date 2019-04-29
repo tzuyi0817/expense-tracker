@@ -1,15 +1,23 @@
 const express = require('express')
 const router = express.Router()
-// const Record = require('./models/record')
+const moment = require('moment')
+const Record = require('../models/record')
 
 
 //新增一筆支出頁面
 router.get('/new', (req, res) => {
-  res.render('new')
+  const today = moment().format('YYYY-MM-DD')
+  res.render('new', { today })
 })
 
 //新增一筆支出
-router.post('/', (req, res) => {
+router.post('/new', (req, res) => {
+  const record = Record(req.body)
+
+  record.save(err => {
+    if (err) return console.log(err)
+    res.redirect('/')
+  })
 
 })
 
