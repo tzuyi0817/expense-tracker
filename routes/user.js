@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const User = require('../models/user')
 
 //登入頁面
 router.get('/login', (req, res) => {
@@ -18,7 +19,20 @@ router.get('/register', (req, res) => {
 
 //註冊撿查
 router.post('/register', (req, res) => {
-  res.send('register')
+  const { name, email, password, password2 } = req.body
+
+  User.findOne({ email: email }).then(user => {
+    if (user) {
+      console.log('帳號已經存在')
+      res.render('register', { name, email, password, password2 })
+    } else {
+      const newUser = new User({ name, email, password })
+      newUser.save().then(user => {
+        res.redirect('/')
+      })
+        .catch(err => console.log(err))
+    }
+  })
 })
 
 //登出
