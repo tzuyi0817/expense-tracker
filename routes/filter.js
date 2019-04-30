@@ -1,8 +1,9 @@
 const express = require('express')
 const router = express.Router()
 const Record = require('../models/record')
+const { authenticated } = require('../config/auth')
 
-router.get('/month/:month', (req, res) => {
+router.get('/month/:month', authenticated, (req, res) => {
   const month = req.params.month
   Record.find({}, (err, records) => {
     if (err) return console.log(err)
@@ -18,7 +19,7 @@ router.get('/month/:month', (req, res) => {
   })
 })
 
-router.get('/category/:category', (req, res) => {
+router.get('/category/:category', authenticated, (req, res) => {
   let category = req.params.category
 
   if (category === 'fas fa-home') {
