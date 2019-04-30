@@ -48,7 +48,7 @@ router.get('/:id/edit', (req, res) => {
 
 
 //編輯資料
-router.post('/:id', (req, res) => {
+router.put('/:id', (req, res) => {
   Record.findById(req.params.id, (err, record) => {
     if (err) return console.log(err)
     Object.assign(record, req.body)
@@ -61,7 +61,7 @@ router.post('/:id', (req, res) => {
 })
 
 //刪除資料
-router.post('/:id/delete', (req, res) => {
+router.delete('/:id/delete', (req, res) => {
   Record.findById(req.params.id, (err, record) => {
     if (err) return console.log(err)
     record.remove(err => {

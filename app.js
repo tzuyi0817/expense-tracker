@@ -3,6 +3,10 @@ const app = express()
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const methodOverride = require('method-override')
+
+//setting method-override
+app.use(methodOverride('_method'))
 
 //setting body-parser
 app.use(bodyParser.urlencoded({ extended: true }))
