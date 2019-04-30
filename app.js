@@ -38,7 +38,9 @@ db.once('open', () => {
 
 //setting session
 app.use(session({
-  secret: 'key'
+  secret: 'key',
+  resave: 'false',
+  saveUninitialized: 'false'
 }))
 
 //setting passport
@@ -57,6 +59,7 @@ app.use('/', require('./routes/home'))
 app.use('/record', require('./routes/record'))
 app.use('/filter', require('./routes/filter'))
 app.use('/users', require('./routes/user'))
+app.use('/auth', require('./routes/auths'))
 
 app.listen(3000, () => {
   console.log('Express is running on http://localhost:3000')
