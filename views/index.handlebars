@@ -75,11 +75,11 @@
         <a href="/record/{{{id}}}/edit" class="btn btn-success">修改</a>
       </div>
 
-      <form action="/record/{{{id}}}" method="POST">
-        <div class="delete card-end mt-4">
-          <a href="" class="btn btn-info">刪除</a>
-        </div>
-      </form>
+      <div class="delete card-end mt-4">
+        <form action="/record/{{{id}}}/delete" method="POST">
+          <button type="submit" class="btn btn-info">刪除</button>
+        </form>
+      </div>
     </div>
   </div>
   {{/each}}

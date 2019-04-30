@@ -54,6 +54,7 @@ router.post('/:id', (req, res) => {
     Object.assign(record, req.body)
 
     record.save(err => {
+      if (err) return console.log(err)
       res.redirect(`/`)
     })
   })
@@ -61,7 +62,13 @@ router.post('/:id', (req, res) => {
 
 //刪除資料
 router.post('/:id/delete', (req, res) => {
-
+  Record.findById(req.params.id, (err, record) => {
+    if (err) return console.log(err)
+    record.remove(err => {
+      if (err) return console.log(err)
+      res.redirect('/')
+    })
+  })
 })
 
 module.exports = router
