@@ -5,7 +5,7 @@ const { authenticated } = require('../config/auth')
 
 router.get('/month/:month', authenticated, (req, res) => {
   const month = req.params.month
-  Record.find({}, (err, records) => {
+  Record.find({ userId: req.user._id }, (err, records) => {
     if (err) return console.log(err)
     const monthFilter = records.filter(record => {
       return month === record.date.substring(5, 7)
@@ -34,7 +34,7 @@ router.get('/category/:category', authenticated, (req, res) => {
     category = '其他'
   }
 
-  Record.find({ category: req.params.category }, (err, records) => {
+  Record.find({ category: req.params.category, userId: req.user._id }, (err, records) => {
     if (err) return console.log(err)
 
     let totalAmount = 0

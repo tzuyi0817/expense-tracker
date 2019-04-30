@@ -13,7 +13,7 @@ router.get('/new', authenticated, (req, res) => {
 
 //新增一筆支出
 router.post('/new', authenticated, (req, res) => {
-  const record = Record(req.body)
+  const record = Record({ ...req.body, userId: req.user._id })
 
   record.save(err => {
     if (err) return console.log(err)
@@ -24,7 +24,7 @@ router.post('/new', authenticated, (req, res) => {
 
 //編輯頁面
 router.get('/:id/edit', authenticated, (req, res) => {
-  Record.findById(req.params.id, (err, record) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.log(err)
 
     let optionASelected = false
@@ -50,7 +50,7 @@ router.get('/:id/edit', authenticated, (req, res) => {
 
 //編輯資料
 router.put('/:id', authenticated, (req, res) => {
-  Record.findById(req.params.id, (err, record) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.log(err)
     Object.assign(record, req.body)
 
@@ -63,7 +63,7 @@ router.put('/:id', authenticated, (req, res) => {
 
 //刪除資料
 router.delete('/:id/delete', authenticated, (req, res) => {
-  Record.findById(req.params.id, (err, record) => {
+  Record.findOne({ _id: req.params.id, userId: req.user._id }, (err, record) => {
     if (err) return console.log(err)
     record.remove(err => {
       if (err) return console.log(err)
