@@ -38,6 +38,7 @@ db.once('open', () => {
 //setting routers
 app.use('/', require('./routes/home'))
 app.use('/record', require('./routes/record'))
+app.use('/filter', require('./routes/filter'))
 
 app.listen(3000, () => {
   console.log('Express is running on http://localhost:3000')
